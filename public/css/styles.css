@@ -1,0 +1,137 @@
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #112031;
+  border-radius: 20px;
+  outline: 1px solid slategrey;
+}
+
+.themePreview{
+  height:225px;
+  inset:0px;
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:dark:
+}
+
+.themePreview::-webkit-scrollbar{
+  width:5px;
+  height:5px;
+}
+.themePreview::-webkit-scrollbar-track{
+  border-radius: 10px;
+  /* background: #f5f5f5;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+}
+.themePreview::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background: #112031;
+}
+
+
+.main-head{
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+.content {
+  padding: 7rem 0; }
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 900; }
+
+  .form-control {
+  border: none;
+  background: #f3f3f3; }
+  .form-control:active, .form-control:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #000;
+    background: #f3f3f3; }
+
+.col-form-label {
+  color: #000; }
+
+.btnn, .form-control, .custom-select {
+  height: 50px;margin-bottom: 15px;}
+
+.custom-select:active, .custom-select:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: #000; }
+
+.btnn {
+  border: none;
+  border-radius: 4px !important; }
+  .btnn.btnn-primary {
+    background: #000;
+    color: #fff;
+    padding: 15px 20px; }
+
+  .btnn.btnn-home{
+    height: 40px;
+    background: #FF6767;
+    color: #fff;
+    text-decoration: none;
+  }
+  .btnn:hover {
+    color: #fff; }
+  .btnn:active, .btn:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+
+    .box {
+      padding: 40px;
+      background: #fff;
+      -webkit-box-shadow: -30px 30px 0px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: -30px 30px 0px 0 rgba(0, 0, 0, 0.08); }
+      .box h3 {
+        font-size: 14px;
+        margin-bottom: 30px;
+        text-align: center; }
+
+    label.error {
+      font-size: 12px;
+      color: red; }
+
+    #message {
+      resize: vertical; }
+
+    #form-message-warning, #form-message-success {
+      display:none; }
+
+    #form-message-warning {
+      color: #B90B0B; }
+
+    #form-message-success {
+      color: #55A44E;
+      font-size: 18px;
+      font-weight: bold; }
+
+    .submitting {
+      float: left;
+      width: 100%;
+      padding: 10px 0;
+      display: none;
+      font-weight: bold;
+      font-size: 12px;
+      color: #000; }
+      textarea {
+        width: 300px;
+        height: 150px;
+      }
+
+      .swal-button {
+
+  background-color: #000000;
+
+}
