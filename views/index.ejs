@@ -1,203 +1,316 @@
 <%-include("header")-%>
 <main>
 
-  <section class="py-5 text-center container">
+<!-- #F7F6F2 -->
+  <section class="py-5 text-center container " style="padding-bottom:0 !important;background:#D5D5D5;">
     <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="main-head">Your dream websites awaits !</h1>
-        <p class="lead text-mute">Welcome to our fresh collection of themes.Hope you find your dream website here.Start your journey with our themes.</p>
-        <img src="images/animation.png" style="width:50px;margin-top:20px;" alt="">
+      <div class="col-lg-6 col-md-8 mx-auto ">
+        <div class="box-shadow" style="padding:10px;margin-top:40px;margin-bottom:60px;">
+          <h1 class="main-head me" style="text-align:justify;">Your dream websites awaits <span class="blink">!</span></h1>
+          <p class="lead text-mute myDesc" style="margin-top:10px;text-align:justify !important;">Welcome to our fresh collection of themes. Hope you find your dream website here. Start your journey with our themes.</p>
+
+        </div>
+
       </div>
+      <div class="col-lg-6 col-md-8 mx-auto back" style="height:400px;">
+
+      </div>
+
+
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
 
     <div class="container">
+      <div class="head-font" style="margin-bottom:20px;">
+        <h2>Lets start our search!</h2>
+      </div>
+      <% for(let i=0;i<array.length;i++){%>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
+          <% if(array[i].type=="Educational"){%>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Educational</span> Websites </h5>
+              <% break; %>
+           <%}%>
+       <%}%>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="margin-bottom:40px;">
 
-            <div class="themePreview" >
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2017/12/fashion-landing-533x2328.jpg">
-            </div>
-            <div class="card-body">
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Fashion landing page.</p>
-                <input type="hidden" name="title" value="Fashion landing page.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                    <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/art-design/fashion-landing-page/live-demo">preview</a>
+          <% array.forEach(function(item){%>
+            <% if(item.type=="Educational"){%>
+
+              <div class="col" >
+                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+                  <div class="themePreview">
+                    <img src="images/<%=item.thumbnail[0]%>">
+                  </div>
+                  <div class="card-body">
+
+                    <form  action="/form" method="post">
+                      <p class="theme-title"   ><%=item.title%></p>
+
+                      <input type="hidden" name="title" value="<%=item.title%>">
+                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                      </div>
+                    </div>
+                    </form>
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2018/09/nutritionist-landing-page-533x3232.jpg">
-            </div>
-            <div class="card-body">
+              </div>
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Nutritionist landing page.</p>
-                <input type="hidden" name="title" value="Nutritionist page.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/food-drink/nutritionist-landing-page/live-demo">preview</a>
+            <%}%>
+          <%})%>
+
+      </div>
+      <% for(let i=0;i<array.length;i++){%>
+
+          <% if(array[i].type=="Nonprofit"){%>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Nonprofit</span> Websites</h5>
+              <% break; %>
+           <%}%>
+       <%}%>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+          <% array.forEach(function(item){%>
+            <% if(item.type=="Nonprofit"){%>
+              <div class="col" >
+                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+                  <div class="themePreview">
+                    <img src="images/<%=item.thumbnail[0]%>">
+                  </div>
+                  <div class="card-body">
+
+                    <form  action="/form" method="post">
+                      <p class="theme-title"   ><%=item.title%></p>
+
+                      <input type="hidden" name="title" value="<%=item.title%>">
+                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2018/01/restaurant-landing-533x1781.jpg">
-            </div>
-            <div class="card-body">
+            <%}%>
+          <%})%>
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Restaurant landing page. </p>
-                <input type="hidden" name="title" value="Restaurant landing page.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/business/restaurant-landing-page/live-demo">preview</a>
+
+
+      </div>
+      <% for(let i=0;i<array.length;i++){%>
+
+          <% if(array[i].type=="Sports"){%>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Sports</span> Websites</h5>
+              <% break; %>
+           <%}%>
+       <%}%>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+          <% array.forEach(function(item){%>
+            <% if(item.type=="Sports"){%>
+              <div class="col" >
+                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+                  <div class="themePreview">
+                    <img src="images/<%=item.thumbnail[0]%>">
+                  </div>
+                  <div class="card-body">
+
+                    <form  action="/form" method="post">
+                      <p class="theme-title"   ><%=item.title%></p>
+
+                      <input type="hidden" name="title" value="<%=item.title%>">
+                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              </form>
-            </div>
-          </div>
-        </div>
+            <%}%>
+          <%})%>
 
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2018/02/juice-shop-landing-page-533x2569.jpg">
-            </div>
-            <div class="card-body">
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Juice shop landing.</p>
-                <input type="hidden" name="title" value="Juice shop landing.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/food-drink/juice-shop-landing-page/live-demo">preview</a>
+
+      </div>
+      <% for(let i=0;i<array.length;i++){%>
+
+          <% if(array[i].type=="E-Commerce"){%>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">E-Commerce</span> Websites</h5>
+              <% break; %>
+           <%}%>
+       <%}%>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+          <% array.forEach(function(item){%>
+            <% if(item.type=="E-Commerce"){%>
+              <div class="col" >
+                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+                  <div class="themePreview">
+                    <img src="images/<%=item.thumbnail[0]%>">
+                  </div>
+                  <div class="card-body">
+
+                    <form  action="/form" method="post">
+                      <p class="theme-title"   ><%=item.title%></p>
+
+                      <input type="hidden" name="title" value="<%=item.title%>">
+                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/04/farmer-landing-page-533x2372.jpg">
-            </div>
-            <div class="card-body">
+            <%}%>
+          <%})%>
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Farmer Landing.</p>
-                <input type="hidden" name="title" value="Farmer landing.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/food-drink/farmer-landing-page/live-demo">preview</a>
+
+
+      </div>
+      <% for(let i=0;i<array.length;i++){%>
+
+          <% if(array[i].type=="Portfolio"){%>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Portfolio</span> Websites</h5>
+              <% break; %>
+           <%}%>
+       <%}%>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+          <% array.forEach(function(item){%>
+            <% if(item.type=="Portfolio"){%>
+              <div class="col" >
+                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+                  <div class="themePreview">
+                    <img src="images/<%=item.thumbnail[0]%>">
+                  </div>
+                  <div class="card-body">
+
+                    <form  action="/form" method="post">
+                      <p class="theme-title"   ><%=item.title%></p>
+
+                      <input type="hidden" name="title" value="<%=item.title%>">
+                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/07/donut-shop-landing-page-533x1883.jpg">
-            </div>
-            <div class="card-body">
+            <%}%>
+          <%})%>
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Donut shop landing.</p>
-                <input type="hidden" name="title" value="Donut shop landing.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/food-drink/donut-shop-landing-page/live-demo">preview</a>
+
+
+      </div>
+      <% for(let i=0;i<array.length;i++){%>
+
+          <% if(array[i].type=="Media"){%>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Media</span> Websites</h5>
+              <% break; %>
+           <%}%>
+       <%}%>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+          <% array.forEach(function(item){%>
+            <% if(item.type=="Media"){%>
+              <div class="col" >
+                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+                  <div class="themePreview">
+                    <img src="images/<%=item.thumbnail[0]%>">
+                  </div>
+                  <div class="card-body">
+
+                    <form  action="/form" method="post">
+                      <p class="theme-title"   ><%=item.title%></p>
+
+                      <input type="hidden" name="title" value="<%=item.title%>">
+                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              </form>
-            </div>
-          </div>
-        </div>
+            <%}%>
+          <%})%>
 
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2020/04/winery-landing-page-533x2491.jpg">
-            </div>
-            <div class="card-body">
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Winery landing page.</p>
-                <input type="hidden" name="title" value="Winery landing page.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/food-drink/winery-landing-page/live-demo">preview</a>
+
+      </div>
+
+       <% for(let i=0;i<array.length;i++){%>
+
+           <% if(array[i].type=="Infopreneur"){%>
+             <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Infopreneur</span> Websites</h5>
+               <% break; %>
+            <%}%>
+        <%}%>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+          <% array.forEach(function(item){%>
+            <% if(item.type=="Infopreneur"){%>
+              <div class="col" >
+                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+                  <div class="themePreview">
+                    <img src="images/<%=item.thumbnail[0]%>">
+                  </div>
+                  <div class="card-body">
+
+                    <form  action="/form" method="post">
+                      <p class="theme-title"   ><%=item.title%></p>
+
+                      <input type="hidden" name="title" value="<%=item.title%>">
+                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2018/06/elementary-school-landing-page-533x2129.jpg">
-            </div>
-            <div class="card-body">
+            <%}%>
+          <%})%>
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >Elementary school landing.</p>
-                <input type="hidden" name="title" value="Elementary school landing.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/education/elementary-school-landing-page/live-demo">preview</a>
-                </div>
-              </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="themePreview">
-              <img src="https://www.elegantthemes.com/layouts/wp-content/uploads/2017/12/coding-school_landing-533x2406.jpg">
-            </div>
-            <div class="card-body">
 
-              <form  action="/form" method="post">
-                <p style="font-weight:bold;"   >LMS landing page.</p>
-                <input type="hidden" name="title" value="LMS landing page.">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <button type="submit" class="btn btn-sm btn-outline-secondary"  >select</button>
-                  <a class="btn btn-sm btn-dark" href="https://www.elegantthemes.com/layouts/education/lms-landing-page/live-demo">preview</a>
-                </div>
-              </div>
-              </form>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
 
