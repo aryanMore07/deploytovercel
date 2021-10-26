@@ -1,12 +1,145 @@
-<%-include("header")-%>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Album example · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
+    <!-- JavaScript Bundle with Popper -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link href="//db.onlinewebfonts.com/c/27cb2381f8e348c531e19a16b9921082?family=Suisse+Works+Bold" rel="stylesheet" type="text/css"/>
+
+<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+
+  </head>
+  <body>
+    <% try{ %>
+      <% for(let i=0;i<1;i++){ %>
+     <div style="background:<%=arr[i].color%>;text-align:center;">
+             <p style="padding:15px;margin-bottom:0;color:<%=arr[i].textColor%>"><span style="font-weight:bold;"><%= arr[i].head %></span>|<%= arr[i].description%><br><span><%=arr[i].duration%></span></p>
+
+     </div>
+     <%}%>
+    <%}catch(e){%>
+      <div style="display:collapse;">
+
+      </div>
+    <%}%>
+   <div class="nav-container" style="position:relative;z-index:2;">
+     <nav class="navbar navbar-expand-lg navbar-light" style="padding:0 !important;">
+     <div class="container-fluid" style="padding:10px 120px;">
+       <a class="navbar-brand" href="#" style="font-weight:bold;"">Myknot <span style="color:#9400FF;">Services</span></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="main-menu-option" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="main-menu-option"  href="aboutus">About Us</a>
+           </li>
+           <li class="nav-item">
+             <a class="main-menu-option" href="services">Services</a>
+           </li>
+           <li class="nav-item">
+             <a class="main-menu-option" href="contactus">Contact Us</a>
+           </li>
+           <!-- <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Dropdown
+             </a>
+             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <li><a class="dropdown-item" href="#">Action</a></li>
+               <li><a class="dropdown-item" href="#">Another action</a></li>
+               <li><hr class="dropdown-divider"></li>
+               <li><a class="dropdown-item" href="#">Something else here</a></li>
+             </ul>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link disabled">Disabled</a>
+           </li> -->
+         </ul>
+
+         <form class="d-flex" method="post" action="/customsearch" class="search">
+           <input class="form-control me-2 form-search"  type="search" name="search" placeholder="Search" aria-label="Search">
+           <button   type="submit" class="search-button"></button>
+         </form>
+
+
+
+       </div>
+     </div>
+   </nav>
+   <div class="category-nav-container">
+     <form action="/sub-menu" method="post">
+       <ul class="category-nav">
+
+         <li value="Educational" class="category-options">Educational Websites</li>
+         <li value="Sports" class="category-options">Sports Websites</li>
+         <li value="E-Commerce" class="category-options">E-Commerce Websites</li>
+         <li value="Portfolio" class="category-options">Portfolio Websites</li>
+         <li value="Media" class="category-options">Media Websites</li>
+         <li value="Nonprofit" class="category-options">Nonprofit Websites</li>
+         <li value="Infopreneur" class="category-options">Infopreneur Websites</li>
+       </ul>
+     </form>
+   </div>
+
+   </div>
+
 <main>
 
 <!-- #F7F6F2 -->
-  <section class="py-5 text-center container " style="padding-bottom:0 !important;background:#D5D5D5;">
+  <section class="py-5 text-center container " style="padding-bottom:0 !important;background:#DDDDDD;">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto ">
         <div class="box-shadow" style="padding:10px;margin-top:40px;margin-bottom:60px;">
-          <h1 class="main-head me" style="text-align:justify;">Your dream websites awaits <span class="blink">!</span></h1>
+          <h1 class="main-head me" style="text-align:justify;">Your dream websites awaits <span class="blink" style="font-weight:700;">!</span></h1>
           <p class="lead text-mute myDesc" style="margin-top:10px;text-align:justify !important;">Welcome to our fresh collection of themes. Hope you find your dream website here. Start your journey with our themes.</p>
 
         </div>
@@ -24,7 +157,7 @@
 
     <div class="container">
       <div class="head-font" style="margin-bottom:20px;">
-        <h2>Lets start our search!</h2>
+        <h3>Lets start our search,</h3>
       </div>
       <% for(let i=0;i<array.length;i++){%>
 
@@ -33,38 +166,32 @@
               <% break; %>
            <%}%>
        <%}%>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="margin-bottom:40px;">
 
-          <% array.forEach(function(item){%>
-            <% if(item.type=="Educational"){%>
+       <div class="scrolling-wrapper">
+         <% for(let i=0;i<1;i++){%>
 
-              <div class="col" >
-                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
-                  <div class="themePreview">
-                    <img src="images/<%=item.thumbnail[0]%>">
-                  </div>
-                  <div class="card-body">
+             <% if(array[i].type=="Educational"){%>
+               <div class="car1" >
+                 <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                 <p class="theme-title1"><%=array[i].title%></p>
+                 <p class="theme-desc1"><%=array[i].description%></p>
+               </div>
+              <%}%>
+          <%}%>
+          <% for(let i=1;i<array.length;i++){%>
 
-                    <form  action="/form" method="post">
-                      <p class="theme-title"   ><%=item.title%></p>
-
-                      <input type="hidden" name="title" value="<%=item.title%>">
-                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
-                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
-                      </div>
-                    </div>
-                    </form>
-                  </div>
+              <% if(array[i].type=="Educational"){%>
+                <div class="car">
+                  <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                  <p class="theme-title"><%=array[i].title%></p>
+                  <p class="theme-desc"><%=array[i].description%></p>
+                  <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                 </div>
-              </div>
-
-            <%}%>
-          <%})%>
+               <%}%>
+           <%}%>
 
       </div>
+
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Nonprofit"){%>
@@ -72,40 +199,34 @@
               <% break; %>
            <%}%>
        <%}%>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+       <div class="scrolling-wrapper">
+         <%let c=0;%>
+         <% for(let i=0;i<array.length;i++){%>
+
+             <% if(array[i].type=="Nonprofit"){%>
+                   <%if(c==0){%>
+                     <div class="car1" >
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                       <p class="theme-title1"><%=array[i].title%></p>
+                       <p class="theme-desc1"><%=array[i].description%></p>
+                     </div>
 
 
-
-          <% array.forEach(function(item){%>
-            <% if(item.type=="Nonprofit"){%>
-              <div class="col" >
-                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
-                  <div class="themePreview">
-                    <img src="images/<%=item.thumbnail[0]%>">
-                  </div>
-                  <div class="card-body">
-
-                    <form  action="/form" method="post">
-                      <p class="theme-title"   ><%=item.title%></p>
-
-                      <input type="hidden" name="title" value="<%=item.title%>">
-                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
-                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
-                      </div>
+                  <% }else{%>
+                    <div class="car">
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                      <p class="theme-title"><%=array[i].title%></p>
+                      <p class="theme-desc"><%=array[i].description%></p>
+                      <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                     </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            <%}%>
-          <%})%>
-
-
+                <%  }%>
+                <%c++;%>
+               <%}%>
+           <%}%>
 
       </div>
+
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Sports"){%>
@@ -113,40 +234,34 @@
               <% break; %>
            <%}%>
        <%}%>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+       <div class="scrolling-wrapper">
+         <%let d=0;%>
+         <% for(let i=0;i<array.length;i++){%>
+
+             <% if(array[i].type=="Sports"){%>
+                   <%if(d==0){%>
+                     <div class="car1" >
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                       <p class="theme-title1"><%=array[i].title%></p>
+                       <p class="theme-desc1"><%=array[i].description%></p>
+                     </div>
 
 
-
-          <% array.forEach(function(item){%>
-            <% if(item.type=="Sports"){%>
-              <div class="col" >
-                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
-                  <div class="themePreview">
-                    <img src="images/<%=item.thumbnail[0]%>">
-                  </div>
-                  <div class="card-body">
-
-                    <form  action="/form" method="post">
-                      <p class="theme-title"   ><%=item.title%></p>
-
-                      <input type="hidden" name="title" value="<%=item.title%>">
-                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
-                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
-                      </div>
+                  <% }else{%>
+                    <div class="car">
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                      <p class="theme-title"><%=array[i].title%></p>
+                      <p class="theme-desc"><%=array[i].description%></p>
+                      <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                     </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            <%}%>
-          <%})%>
-
-
+                <%  }%>
+                <%d++;%>
+               <%}%>
+           <%}%>
 
       </div>
+
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="E-Commerce"){%>
@@ -154,38 +269,31 @@
               <% break; %>
            <%}%>
        <%}%>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+       <div class="scrolling-wrapper">
+         <%let e=0;%>
+         <% for(let i=0;i<array.length;i++){%>
+
+             <% if(array[i].type=="E-Commerce"){%>
+                   <%if(e==0){%>
+                     <div class="car1" >
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                       <p class="theme-title1"><%=array[i].title%></p>
+                       <p class="theme-desc1"><%=array[i].description%></p>
+                     </div>
 
 
-
-          <% array.forEach(function(item){%>
-            <% if(item.type=="E-Commerce"){%>
-              <div class="col" >
-                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
-                  <div class="themePreview">
-                    <img src="images/<%=item.thumbnail[0]%>">
-                  </div>
-                  <div class="card-body">
-
-                    <form  action="/form" method="post">
-                      <p class="theme-title"   ><%=item.title%></p>
-
-                      <input type="hidden" name="title" value="<%=item.title%>">
-                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
-                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
-                      </div>
+                  <% }else{%>
+                    <div class="car">
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                      <p class="theme-title"><%=array[i].title%></p>
+                      <p class="theme-desc"><%=array[i].description%></p>
+                      <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                     </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            <%}%>
-          <%})%>
-
-
+                <%  }%>
+                <%e++;%>
+               <%}%>
+           <%}%>
 
       </div>
       <% for(let i=0;i<array.length;i++){%>
@@ -195,40 +303,34 @@
               <% break; %>
            <%}%>
        <%}%>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+       <div class="scrolling-wrapper">
+         <%let f=0;%>
+         <% for(let i=0;i<array.length;i++){%>
+
+             <% if(array[i].type=="Portfolio"){%>
+                   <%if(f==0){%>
+                     <div class="car1" >
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                       <p class="theme-title1"><%=array[i].title%></p>
+                       <p class="theme-desc1"><%=array[i].description%></p>
+                     </div>
 
 
-
-          <% array.forEach(function(item){%>
-            <% if(item.type=="Portfolio"){%>
-              <div class="col" >
-                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
-                  <div class="themePreview">
-                    <img src="images/<%=item.thumbnail[0]%>">
-                  </div>
-                  <div class="card-body">
-
-                    <form  action="/form" method="post">
-                      <p class="theme-title"   ><%=item.title%></p>
-
-                      <input type="hidden" name="title" value="<%=item.title%>">
-                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
-                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
-                      </div>
+                  <% }else{%>
+                    <div class="car">
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                      <p class="theme-title"><%=array[i].title%></p>
+                      <p class="theme-desc"><%=array[i].description%></p>
+                      <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                     </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            <%}%>
-          <%})%>
-
-
+                <%  }%>
+                <%f++;%>
+               <%}%>
+           <%}%>
 
       </div>
+
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Media"){%>
@@ -236,85 +338,82 @@
               <% break; %>
            <%}%>
        <%}%>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+       <div class="scrolling-wrapper">
+         <%let g=0;%>
+         <% for(let i=0;i<array.length;i++){%>
+
+             <% if(array[i].type=="Media"){%>
+                   <%if(g==0){%>
+                     <div class="car1" >
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                       <p class="theme-title1"><%=array[i].title%></p>
+                       <p class="theme-desc1"><%=array[i].description%></p>
+                     </div>
 
 
-
-          <% array.forEach(function(item){%>
-            <% if(item.type=="Media"){%>
-              <div class="col" >
-                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
-                  <div class="themePreview">
-                    <img src="images/<%=item.thumbnail[0]%>">
-                  </div>
-                  <div class="card-body">
-
-                    <form  action="/form" method="post">
-                      <p class="theme-title"   ><%=item.title%></p>
-
-                      <input type="hidden" name="title" value="<%=item.title%>">
-                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
-                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
-                      </div>
+                  <% }else{%>
+                    <div class="car">
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                      <p class="theme-title"><%=array[i].title%></p>
+                      <p class="theme-desc"><%=array[i].description%></p>
+                      <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                     </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            <%}%>
-          <%})%>
+                <%  }%>
+                <%g++;%>
+               <%}%>
+           <%}%>
+
+      </div>
+      <% for(let i=0;i<array.length;i++){%>
+
+          <% if(array[i].type=="Infopreneur"){%>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Infopreneur</span> Websites</h5>
+              <% break; %>
+           <%}%>
+       <%}%>
+
+       <div class="scrolling-wrapper">
+         <%let h=0;%>
+         <% for(let i=0;i<array.length;i++){%>
+
+             <% if(array[i].type=="Infopreneur"){%>
+                   <%if(h==0){%>
+                     <div class="car1" >
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                       <p class="theme-title1"><%=array[i].title%></p>
+                       <p class="theme-desc1"><%=array[i].description%></p>
+                     </div>
 
 
+                  <% }else{%>
+                    <div class="car">
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
+                      <p class="theme-title"><%=array[i].title%></p>
+                      <p class="theme-desc"><%=array[i].description%></p>
+                      <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
+                    </div>
+                <%  }%>
+                <%h++;%>
+               <%}%>
+           <%}%>
 
       </div>
 
-       <% for(let i=0;i<array.length;i++){%>
 
-           <% if(array[i].type=="Infopreneur"){%>
-             <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Infopreneur</span> Websites</h5>
-               <% break; %>
-            <%}%>
-        <%}%>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+       </div>
 
 
 
-          <% array.forEach(function(item){%>
-            <% if(item.type=="Infopreneur"){%>
-              <div class="col" >
-                <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
-                  <div class="themePreview">
-                    <img src="images/<%=item.thumbnail[0]%>">
-                  </div>
-                  <div class="card-body">
-
-                    <form  action="/form" method="post">
-                      <p class="theme-title"   ><%=item.title%></p>
-
-                      <input type="hidden" name="title" value="<%=item.title%>">
-                      <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                          <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
-                        <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
-                      </div>
-                    </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            <%}%>
-          <%})%>
 
 
 
-      </div>
+
+
     </div>
 
   </div>
+
 
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 </main>

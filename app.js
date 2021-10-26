@@ -25,8 +25,17 @@ const themeSchema = {
   type:String
 }
 
+const advertisement = {
+  head:String,
+  description:String,
+  duration:String,
+  textColor:String,
+  color:String
+}
+
 const Info =  mongoose.model("companyInfo",companySchema);
 const Theme = mongoose.model("theme",themeSchema);
+const Ads = mongoose.model("ad",advertisement);
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -45,9 +54,15 @@ app.set("view engine","ejs");
 
 
 app.get("/",function(req,res){
+
+
   Theme.find({},function(err,items){
-    res.render("index",{array:items});
+    Ads.find({},function(err,obj){
+      res.render("index",{array:items,arr:obj});
+    });
+
   });
+
 
 });
 
@@ -83,6 +98,31 @@ app.post("/companyInfo",function(req,res){
   );
 });
 const array = [];
+
+app.post("/postAdd",function(req,res){
+  const title = req.body.title;
+  const desc = req.body.description;
+  const duration = req.body.duration;
+  let color = req.body.color;
+  let textColor = req.body.textColor;
+  if(color.length==0){
+    color="#FFC069";
+  }
+  if(textColor.length==0){
+    color="#000000";
+  }
+  const add = new Ads({
+    head:title,
+    description:desc,
+    duration:duration,
+    textColor:textColor,
+    color:color
+  });
+
+  add.save().then(()=>{console.log("sent");}
+ );
+ res.redirect("/");
+});
 app.post("/posttheme",upload.single("thumbnail"),function(req,res){
   const themeTitle = req.body.title;
   const thumbnailNames = req.file.originalname;
@@ -107,8 +147,17 @@ app.post("/posttheme",upload.single("thumbnail"),function(req,res){
   res.redirect("/");
 });
 
+app.get("/addForm",function(req,res){
+  Ads.find({},function(err,obj){
+      res.render("addForm",{obj:obj});
+
+  });
+});
+
 app.get("/themeForm",function(req,res){
+
   Theme.find({},function(err,items){
+
     res.render("themeForm",{items:items});
   });
 });
@@ -121,6 +170,18 @@ app.post("/delete",function(req,res){
     }else{
       console.log("successfully deleted.");
       res.redirect("themeForm");
+    }
+  });
+});
+
+app.post("/deleteAd",function(req,res){
+  const id = req.body.id;
+  Ads.findOneAndDelete({_id:id},function(err,item){
+    if(err){
+      console.log("cannot find the id in the your database.");
+    }else{
+      console.log("successfully deleted.");
+      res.redirect("addForm");
     }
   });
 });
@@ -140,6 +201,27 @@ app.get("/aboutus",function(req,res){
 
 app.post("/customsearch",function(req,res){
   let custom  = lodash.capitalize(req.body.search);
+  let bool = false;
+  Theme.find({},function(err,array){
+    for(let i=0;i<array.length;i++){
+      if(array[i].type == custom){
+      bool = true;
+      break;
+      }
+    }
+  });
+
+    Theme.find({},function(err,array){
+
+        res.render("customsearch",{array:array,custom:custom});
+
+
+    });
+
+});
+
+app.post("/sub-menu",function(req,res){
+  let custom  = req.body.value;
   let bool = false;
   Theme.find({},function(err,array){
     for(let i=0;i<array.length;i++){
