@@ -22,6 +22,13 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   z-index: 1;
 }
+.services-back{
+  background-image:url("/images/manDev.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
 .btnn {
   border: none;
   border-radius: 4px !important; }
@@ -104,6 +111,7 @@ body::-webkit-scrollbar-thumb {
 
 .category-options{
   margin:10px 25px;
+  font-family: BiotifRegular,sans-serif;
   font-size: 14px;
   display: inline;
 }
@@ -117,7 +125,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media(max-width:500px){
   .container-fluid{
-    padding: 10px 50px !important; 
+    padding: 10px 50px !important;
   }
 }
 .car{
@@ -127,9 +135,24 @@ body::-webkit-scrollbar-thumb {
 }
 .col-form-label {
   color: #000; }
+
 .car1{
   width:250px ;
   display: inline-block;
+}
+.card-hover{
+  width:200px;
+  height:300px;
+  background-color: #FFFFFF;
+  display: none;
+}
+.car1:hover~.card-hover{
+  display: inline;
+}
+.company-logo{
+  text-align:center;
+  margin:auto 0;
+  padding:10px;
 }
 .content {
   padding: 7rem 0; }
@@ -174,7 +197,9 @@ background: #f3f3f3; }
   -webkit-box-shadow: none;
   box-shadow: none;
   border-color: #000;
-  background: #f3f3f3; }
+  background: #f3f3f3;
+}
+
 @font-face {
   font-family: LibreBaskerville-Bold;
   src: url(/fonts/LibreBaskerville-Bold.ttf);
@@ -222,7 +247,14 @@ h1::before{
   animation: typewriter 4s steps(28) forwards;
 }
 
-
+.get-started-button{
+  width:120px;
+  height:40px;
+  background: #000000;
+  color:#FFFFFF;
+  border: 0 solid #000000;
+  font-weight: bold;
+}
 @media (max-width:500px){
   h1{
     font-size: 1.5em !important;
@@ -242,6 +274,7 @@ h1::before{
   color: #000000;
   margin-right: 15px;
   font-size: 14px;
+  font-family: BiotifRegular,sans-serif;
 }
 
 .mainImg{
@@ -251,6 +284,16 @@ h1::before{
 .main-head{
   font-size: 2.5rem;
   font-weight: 900;
+}
+.main-head-services{
+  font-weight: 900;
+  text-align:left;
+  font-size:3em;
+}
+@media(max-width:600px){
+  .main-head-services{
+    font-size:2.7em;
+  }
 }
 
 .marge{
@@ -280,6 +323,44 @@ h1::before{
 /* .card:hover > .themePreview{
   height: 150px;
 } */
+.center{
+  text-align: right !important;
+}
+.service-h4-font{
+  font-family: 'Suisse Works Bold', sans-serif;
+}
+.service-images{
+  width:450px;
+  height:330px;
+  margin-right: 20px;
+}
+
+@media(max-width:600px){
+  .center{
+    text-align:center !important;
+  }
+  .services-images{
+    width:350px ;
+    height:230px;
+    margin-right: 0;
+  }
+}
+.service-content {
+	position: relative;
+	list-style: none;
+	margin-left: 0;
+	padding-left: 1.2em;
+  font-size: 1.1rem;
+}
+.service-content .service-content-points:before {
+	content: "✓";
+	position: absolute;
+	left: 0;
+}
+.sub-col{
+  margin:50px 0 0 20px;
+  line-height: 2rem;
+}
 .search-button{
   background-image: url("/images/search-icon.png");
   width:40px;
@@ -354,7 +435,8 @@ textarea {
 
 .myDesc{
   font-weight:350;
-  font-size: 15px;
+  font-size: 1.1rem;
+  font-family: BiotifRegular,sans-serif;
 }
 
 

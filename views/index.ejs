@@ -59,7 +59,7 @@
     <% try{ %>
       <% for(let i=0;i<1;i++){ %>
      <div style="background:<%=arr[i].color%>;text-align:center;">
-             <p style="padding:15px;margin-bottom:0;color:<%=arr[i].textColor%>"><span style="font-weight:bold;"><%= arr[i].head %></span>|<%= arr[i].description%><br><span><%=arr[i].duration%></span></p>
+             <p style="padding:15px;margin-bottom:0;color:<%=arr[i].textColor%>"><span style="font-weight:bold;"><%= arr[i].head %></span> | <%= arr[i].description%><br><span><%=arr[i].duration%></span></p>
 
      </div>
      <%}%>
@@ -176,6 +176,7 @@
                  <p class="theme-title1"><%=array[i].title%></p>
                  <p class="theme-desc1"><%=array[i].description%></p>
                </div>
+               <div class="card-hover">afaf</div>
               <%}%>
           <%}%>
           <% for(let i=1;i<array.length;i++){%>
