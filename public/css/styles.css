@@ -208,6 +208,10 @@ background: #f3f3f3; }
   font-family: BiotifRegular;
   src:url(/fonts/Biotif-Regular.ttf);
 }
+@font-face {
+  font-family:Suisse-Works-Bold;
+  src:url(/fonts/Suisse-Works-Bold.ttf);
+}
 #form-message-warning, #form-message-success {
   display:none; }
 
@@ -220,7 +224,7 @@ background: #f3f3f3; }
   font-weight: bold; }
 
 .head-font{
-  font-family: 'Suisse Works Bold', serif;
+  font-family: Suisse-Works-Bold, serif;
 }
 
 .heading {
@@ -228,7 +232,7 @@ background: #f3f3f3; }
   font-weight: 900; }
 h1{
   position: relative;
-  font-family: 'Suisse Works Bold', serif;
+  font-family: Suisse-Works-Bold, serif;
   font-size: 2.7em ;
   font-weight: 900;
 }
@@ -327,7 +331,7 @@ h1::before{
   text-align: right !important;
 }
 .service-h4-font{
-  font-family: 'Suisse Works Bold', sans-serif;
+  font-family:Suisse-Works-Bold,serif;
 }
 .service-images{
   width:450px;
@@ -335,11 +339,12 @@ h1::before{
   margin-right: 20px;
 }
 
+
 @media(max-width:600px){
   .center{
     text-align:center !important;
   }
-  .services-images{
+  .service-images{
     width:350px ;
     height:230px;
     margin-right: 0;
