@@ -1,9 +1,11 @@
 .ast-footer-copyright{
   margin:40px auto 0;
 }
+body{
+  overflow-x: hidden;
+}
 body::-webkit-scrollbar {
   width: 1em;
-  overflow:hidden !important;
 }
 
 body::-webkit-scrollbar-track {
