@@ -16,7 +16,14 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid slategrey;
 }
 .back{
-  background-image:url("/images/mainimage.jpg");
+  background-image:url("/images/startup.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.about-us-back{
+  background-image:url("/images/rank.png");
   background-size: contain;
   background-repeat: no-repeat;
   position: relative;
@@ -288,6 +295,11 @@ h1::before{
 .main-head{
   font-size: 2.5rem;
   font-weight: 900;
+}
+.main-head-about{
+  font-weight: 900;
+  text-align:left;
+  font-size:3.5em;
 }
 .main-head-services{
   font-weight: 900;
