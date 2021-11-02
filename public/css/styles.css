@@ -1,8 +1,9 @@
 .ast-footer-copyright{
   margin:40px auto 0;
 }
-body{
-  overflow-x: hidden;
+html, body {
+   max-width: 100%  ;
+   overflow-x: hidden;
 }
 body::-webkit-scrollbar {
   width: 1em;
