@@ -293,23 +293,33 @@ h1::before{
   padding: 20px;
 }
 .main-head{
-  font-size: 2.5rem;
+  font-size: 50px;
   font-weight: 900;
 }
 .main-head-about{
   font-weight: 900;
   text-align:left;
-  font-size:3.5em;
+  font-size:50px;
 }
 .main-head-services{
   font-weight: 900;
   text-align:left;
-  font-size:3em;
+  font-size:50px;
 }
 @media(max-width:600px){
   .main-head-services{
-    font-size:2.7em;
+    font-size:40px !important;
+    font-weight: 900;
   }
+  .main-head{
+    font-size: 40px !important;
+    font-weight: 900;
+  }
+  .main-head-about{
+    font-weight: 900;
+    font-size:40px !important;
+  }
+
 }
 
 .marge{
