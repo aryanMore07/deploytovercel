@@ -4,6 +4,9 @@
 html, body {
    max-width: 100%  ;
    overflow-x: hidden;
+   /* background-color: #FBF3E4; */
+   /* background-color: #F1E9E5; */
+   background-color: #EDF6E5;
 }
 body::-webkit-scrollbar {
   width: 1em;
@@ -239,7 +242,8 @@ background: #f3f3f3; }
 
 .heading {
   font-size: 2.5rem;
-  font-weight: 900; }
+  font-weight: 900;
+}
 h1{
   position: relative;
   font-family: Suisse-Works-Bold, serif;
@@ -257,10 +261,16 @@ h1::after,h1::before{
 }
 
 h1::before{
-  background: White;
+  background: #EDF6E5;
   animation: typewriter 4s steps(28) forwards;
 }
-
+#aboutus-head-anime::before{
+  background: #F7DAD9;
+  animation: typewriter 4s steps(28) forwards;
+}
+h2{
+  font-family:Suisse-Works-Bold, serif;
+}
 .get-started-button{
   width:120px;
   height:40px;
@@ -320,7 +330,10 @@ h1::before{
   }
   .main-head-about{
     font-weight: 900;
-    font-size:40px !important;
+    font-size:35px !important;
+  }
+  .main-head-about-container{
+    margin:30px auto !important;
   }
 
 }
@@ -341,7 +354,9 @@ h1::before{
 /* .myDesc{
   font-family:BiotifRegular, sans-serif !important;
 } */
-
+p{
+  font-family: BiotifRegular,serif;
+}
 .themePreview{
   height:225px;
   inset:0px;
