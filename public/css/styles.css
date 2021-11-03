@@ -35,6 +35,16 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   z-index: 1;
 }
+@media(max-width:600px){
+  .about-us-back{
+    background-image:url("/images/rank.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    width:400px;
+  }
+}
 .services-back{
   background-image:url("/images/manDev.png");
   background-size: contain;
@@ -330,7 +340,7 @@ h2{
   }
   .main-head-about{
     font-weight: 900;
-    font-size:35px !important;
+    font-size:40px !important;
   }
   .main-head-about-container{
     margin:30px auto !important;
