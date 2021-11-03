@@ -6,7 +6,7 @@ html, body {
    overflow-x: hidden;
    /* background-color: #FBF3E4; */
    /* background-color: #F1E9E5; */
-   background-color: #EDF6E5;
+   background-color: #F1F1F1;
 }
 body::-webkit-scrollbar {
   width: 1em;
@@ -35,6 +35,14 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   z-index: 1;
 }
+.contact-us-back{
+  background-image:url("/images/subscribe.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  margin:auto auto;
+}
 @media(max-width:600px){
   .about-us-back{
     background-image:url("/images/rank.png");
@@ -42,7 +50,16 @@ body::-webkit-scrollbar-thumb {
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
-    width:400px;
+    width:350px;
+  }
+  .contact-us-back{
+    background-image:url("/images/subscribe.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    width:350px;
+    margin:30px auto 0;
   }
 }
 .services-back{
@@ -271,7 +288,7 @@ h1::after,h1::before{
 }
 
 h1::before{
-  background: #EDF6E5;
+  background: #D4ECDD;
   animation: typewriter 4s steps(28) forwards;
 }
 #aboutus-head-anime::before{
@@ -280,6 +297,12 @@ h1::before{
 }
 h2{
   font-family:Suisse-Works-Bold, serif;
+}
+.input-design{
+  border:2px solid #AA14F0;
+  width:300px;
+  height:40px;
+  margin-top: 10px;
 }
 .get-started-button{
   width:120px;
