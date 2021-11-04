@@ -311,6 +311,8 @@ h2{
   color:#FFFFFF;
   border: 0 solid #000000;
   font-weight: bold;
+  text-decoration: none;
+  text-align:center;
 }
 @media (max-width:500px){
   h1{
