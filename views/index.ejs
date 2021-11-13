@@ -187,14 +187,19 @@
                  <p class="theme-title1"><%= str %></p>
                  <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                  <p class="theme-desc1"><%= strDesc %></p>
-                 <form action='/form' method='post'>
-                   <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                 </form>
+                 <div class="mob-select-div">
+                   <form action='/form' method='post'>
+                     <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                   </form>
+                 </div>
+                 <div class="mob-view-div">
+                   <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                 </div>
                </div>
                <!-- <div class="card-hover">afaf</div> -->
               <%}%>
           <%}%>
-          <% for(let i=1;i<5;i++){%>
+          <% for(let i=1;i<array.length;i++){%>
 
               <% if(array[i].type=="Educational"){%>
                 <div class="car" >
@@ -207,9 +212,14 @@
                   <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                   <p class="theme-desc1"><%= strDesc %></p>
                   <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
-                  <form action='/form' method='post'>
-                    <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                  </form>
+                  <div class="mob-select-div">
+                    <form action='/form' method='post'>
+                      <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                    </form>
+                  </div>
+                  <div class="mob-view-div">
+                    <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                  </div>
                 </div>
                <%}%>
            <%}%>
@@ -239,9 +249,14 @@
                        <p class="theme-title1"><%= str %></p>
                        <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                        <p class="theme-desc1"><%= strDesc %></p>
-                       <form action='/form' method='post'>
-                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                       </form>
+                       <div class="mob-select-div">
+                         <form action='/form' method='post'>
+                           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                         </form>
+                       </div>
+                       <div class="mob-view-div">
+                         <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                       </div>
                      </div>
 
 
@@ -255,9 +270,14 @@
                       <p class="theme-title1"><%= str %></p>
                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                       <p class="theme-desc1"><%= strDesc %></p>
-                      <form action='/form' method='post'>
-                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                      </form>
+                      <div class="mob-select-div">
+                        <form action='/form' method='post'>
+                          <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                        </form>
+                      </div>
+                      <div class="mob-view-div">
+                        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                      </div>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                     </div>
                 <%  }%>
@@ -290,9 +310,14 @@
                        <p class="theme-title1"><%= str %></p>
                        <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                        <p class="theme-desc1"><%= strDesc %></p>
-                       <form action='/form' method='post'>
-                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                       </form>
+                       <div class="mob-select-div">
+                         <form action='/form' method='post'>
+                           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                         </form>
+                       </div>
+                       <div class="mob-view-div">
+                         <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                       </div>
                      </div>
 
 
@@ -307,9 +332,14 @@
                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                       <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
-                      <form action='/form' method='post'>
-                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                      </form>
+                      <div class="mob-select-div">
+                        <form action='/form' method='post'>
+                          <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                        </form>
+                      </div>
+                      <div class="mob-view-div">
+                        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                      </div>
                     </div>
                 <%  }%>
                 <%d++;%>
@@ -341,9 +371,14 @@
                        <p class="theme-title1"><%= str %></p>
                        <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                        <p class="theme-desc1"><%= strDesc %></p>
-                       <form action='/form' method='post'>
-                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                       </form>
+                       <div class="mob-select-div">
+                         <form action='/form' method='post'>
+                           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                         </form>
+                       </div>
+                       <div class="mob-view-div">
+                         <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                       </div>
                      </div>
 
 
@@ -358,9 +393,14 @@
                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                       <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
-                      <form action='/form' method='post'>
-                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                      </form>
+                      <div class="mob-select-div">
+                        <form action='/form' method='post'>
+                          <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                        </form>
+                      </div>
+                      <div class="mob-view-div">
+                        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                      </div>
                     </div>
                 <%  }%>
                 <%e++;%>
@@ -391,9 +431,14 @@
                        <p class="theme-title1"><%= str %></p>
                        <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                        <p class="theme-desc1"><%= strDesc %></p>
-                       <form action='/form' method='post'>
-                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                       </form>
+                       <div class="mob-select-div">
+                         <form action='/form' method='post'>
+                           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                         </form>
+                       </div>
+                       <div class="mob-view-div">
+                         <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                       </div>
                      </div>
 
 
@@ -408,9 +453,14 @@
                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                       <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
-                      <form action='/form' method='post'>
-                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                      </form>
+                      <div class="mob-select-div">
+                        <form action='/form' method='post'>
+                          <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                        </form>
+                      </div>
+                      <div class="mob-view-div">
+                        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                      </div>
                     </div>
                 <%  }%>
                 <%f++;%>
@@ -442,9 +492,14 @@
                        <p class="theme-title1"><%= str %></p>
                        <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                        <p class="theme-desc1"><%= strDesc %></p>
-                       <form action='/form' method='post'>
-                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                       </form>
+                       <div class="mob-select-div">
+                         <form action='/form' method='post'>
+                           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                         </form>
+                       </div>
+                       <div class="mob-view-div">
+                         <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                       </div>
                      </div>
 
 
@@ -459,9 +514,14 @@
                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                       <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
-                      <form action='/form' method='post'>
-                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                      </form>
+                      <div class="mob-select-div">
+                        <form action='/form' method='post'>
+                          <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                        </form>
+                      </div>
+                      <div class="mob-view-div">
+                        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                      </div>
                     </div>
                 <%  }%>
                 <%g++;%>
@@ -492,9 +552,14 @@
                        <p class="theme-title1"><%= str %></p>
                        <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                        <p class="theme-desc1"><%= strDesc %></p>
-                       <form action='/form' method='post'>
-                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                       </form>
+                       <div class="mob-select-div">
+                         <form action='/form' method='post'>
+                           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                         </form>
+                       </div>
+                       <div class="mob-view-div">
+                         <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                       </div>
                      </div>
 
 
@@ -509,9 +574,14 @@
                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
                       <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
-                      <form action='/form' method='post'>
-                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
-                      </form>
+                      <div class="mob-select-div">
+                        <form action='/form' method='post'>
+                          <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                        </form>
+                      </div>
+                      <div class="mob-view-div">
+                        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+                      </div>
                     </div>
                 <%  }%>
                 <%h++;%>
