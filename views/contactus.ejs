@@ -6,17 +6,17 @@
         <h2 style="width:300px;margin:0 auto;">Contact Us</h2>
         <div style="margin:20px auto 0;width:300px;">
 
-            <form class="" action="https://formsubmit.co/ssc132000@gmail.com" method="post">
+            <form class="" id="frmAccount" action="https://formsubmit.co/ssc132000@gmail.com" method="post" autocomplete="off">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="https://murmuring-falls-76179.herokuapp.com/">
               <label for="name">Full Name:</label><br>
-              <input class="input-design" type="text" name="name" value=""><br>
+              <input class="input-design" type="text" autocomplete="off" name="name" value="" required><br>
               <label for="email">Email:</label><br>
-              <input class="input-design" type="email" name="email" value=""><br>
+              <input class="input-design" type="email" autocomplete="off" name="email" value="" required><br>
               <label for="phone">Phone No:</label><br>
-              <input class="input-design" type="text" name="phone" value=""><br>
+              <input class="input-design" type="text" autocomplete="off" name="phone" pattern="[7-9]{1}[0-9]{9}"  value="" required><br>
               <label for="message">Message(optional):</label><br>
-              <input class="input-design" type="text" name="message" value=""><br>
+              <input class="input-design" type="text" autocomplete="off" name="message"  value="" required><br>
               <button type="submit" class="get-started-button" style="margin-top:20px;" name="button">Submit</button>
             </form>
 

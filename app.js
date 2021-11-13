@@ -69,12 +69,14 @@ app.get("/",function(req,res){
 
 app.get("/form",function(req,res){
   const title = req.body.title;
+
   res.render("form",{title:title});
 
 });
 
 app.post("/form",function(req,res){
   const title = req.body.title;
+  console.log(title);
   res.render("form",{title:title});
 
 });

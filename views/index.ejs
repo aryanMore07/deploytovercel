@@ -13,7 +13,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
     <!-- JavaScript Bundle with Popper -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Bootstrap core CSS -->
@@ -72,6 +72,7 @@
      <nav class="navbar navbar-expand-lg navbar-light" style="padding:0 !important;">
      <div class="container-fluid" style="padding:10px 120px;">
        <a class="navbar-brand" href="#" style="font-weight:bold;"">Myknot <span style="color:#9400FF;">Services</span></a>
+       <!-- <img style="width:100px;"src="/images/padded-logo.png" alt=""> -->
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
@@ -107,7 +108,7 @@
 
          <form class="d-flex" method="post" action="/customsearch" class="search">
            <input class="form-control me-2 form-search"  type="search" name="search" placeholder="Search" aria-label="Search">
-           <button   type="submit" class="search-button"></button>
+           <button   type="submit" class="search-button" ></button>
          </form>
 
 
@@ -135,14 +136,18 @@
 <main>
 
 <!-- #F7F6F2 -->
-  <section class="py-5 text-center container "  style="padding-bottom:0 !important;margin-top:0;padding-top:0 !important;background:#D4ECDD;">
+<!-- background:#D4ECDD; -->
+  <section class="py-5 text-center container home-section">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto ">
 
         <div  style="padding:10px;margin:40px auto 0;margin-bottom:60px;width:80%;text-align:left;">
           <h1 class="main-head">Your dream <span style="color:#8E05C2;">websites awaits</span>  <span class="blink" style="font-weight:700;color:#8E05C2;">!</span></h1>
           <p class="lead text-mute myDesc" style="margin-top:20px;text-align:justify !important;">Welcome to our fresh collection of themes. Hope you find your dream website here. Start your journey with our themes.</p>
-          <a type="button" href="aboutus" name="button" class="get-started-button" style="margin-top:20px;"><p style="margin:7px;">About us ></p></a>
+          <form action="aboutus" method="get">
+            <button type="submit" class="get-started-button" >About Us ></button>
+          </form>
+
         </div>
 
       </div>
@@ -161,9 +166,10 @@
         <h3>Lets start our search,</h3>
       </div>
       <% for(let i=0;i<array.length;i++){%>
-
+<!-- style="color:#9400FF;" -->
+<!-- previous sub head title colour -->
           <% if(array[i].type=="Educational"){%>
-            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Educational</span> Websites </h5>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span >Educational</span> Websites </h5>
               <% break; %>
            <%}%>
        <%}%>
@@ -172,22 +178,38 @@
          <% for(let i=0;i<1;i++){%>
 
              <% if(array[i].type=="Educational"){%>
-               <div class="car1" >
-                 <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                 <p class="theme-title1"><%=array[i].title%></p>
-                 <p class="theme-desc1"><%=array[i].description%></p>
+               <div class="car1"  >
+                 <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover"  title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><form action='/form' method='post'>
+
+                   <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                 </form>" tabindex="0">
+                 <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                 <p class="theme-title1"><%= str %></p>
+                 <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                 <p class="theme-desc1"><%= strDesc %></p>
+                 <form action='/form' method='post'>
+                   <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                 </form>
                </div>
-               <div class="card-hover">afaf</div>
+               <!-- <div class="card-hover">afaf</div> -->
               <%}%>
           <%}%>
-          <% for(let i=1;i<array.length;i++){%>
+          <% for(let i=1;i<5;i++){%>
 
               <% if(array[i].type=="Educational"){%>
-                <div class="car">
-                  <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                  <p class="theme-title"><%=array[i].title%></p>
-                  <p class="theme-desc"><%=array[i].description%></p>
+                <div class="car" >
+                  <img src="images/<%=array[i].thumbnail[0]%>"  style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                    <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                  </form>" tabindex="0">
+                  <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                  <p class="theme-title1"><%= str %></p>
+                  <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                  <p class="theme-desc1"><%= strDesc %></p>
                   <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
+                  <form action='/form' method='post'>
+                    <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                  </form>
                 </div>
                <%}%>
            <%}%>
@@ -197,7 +219,7 @@
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Nonprofit"){%>
-            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Nonprofit</span> Websites</h5>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span >Nonprofit</span> Websites</h5>
               <% break; %>
            <%}%>
        <%}%>
@@ -209,17 +231,33 @@
              <% if(array[i].type=="Nonprofit"){%>
                    <%if(c==0){%>
                      <div class="car1" >
-                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                       <p class="theme-title1"><%=array[i].title%></p>
-                       <p class="theme-desc1"><%=array[i].description%></p>
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                       </form>" tabindex="0">
+                       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                       <p class="theme-title1"><%= str %></p>
+                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                       <p class="theme-desc1"><%= strDesc %></p>
+                       <form action='/form' method='post'>
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                       </form>
                      </div>
 
 
                   <% }else{%>
                     <div class="car">
-                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                      <p class="theme-title"><%=array[i].title%></p>
-                      <p class="theme-desc"><%=array[i].description%></p>
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                      </form>" tabindex="0">
+                      <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                      <p class="theme-title1"><%= str %></p>
+                      <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                      <p class="theme-desc1"><%= strDesc %></p>
+                      <form action='/form' method='post'>
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                      </form>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
                     </div>
                 <%  }%>
@@ -232,7 +270,7 @@
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Sports"){%>
-            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Sports</span> Websites</h5>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Sports</span> Websites</h5>
               <% break; %>
            <%}%>
        <%}%>
@@ -244,18 +282,34 @@
              <% if(array[i].type=="Sports"){%>
                    <%if(d==0){%>
                      <div class="car1" >
-                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                       <p class="theme-title1"><%=array[i].title%></p>
-                       <p class="theme-desc1"><%=array[i].description%></p>
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                       </form>" tabindex="0">
+                       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                       <p class="theme-title1"><%= str %></p>
+                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                       <p class="theme-desc1"><%= strDesc %></p>
+                       <form action='/form' method='post'>
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                       </form>
                      </div>
 
 
                   <% }else{%>
                     <div class="car">
-                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                      <p class="theme-title"><%=array[i].title%></p>
-                      <p class="theme-desc"><%=array[i].description%></p>
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                      </form>" tabindex="0">
+                      <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                      <p class="theme-title1"><%= str %></p>
+                      <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                      <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
+                      <form action='/form' method='post'>
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                      </form>
                     </div>
                 <%  }%>
                 <%d++;%>
@@ -267,7 +321,7 @@
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="E-Commerce"){%>
-            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">E-Commerce</span> Websites</h5>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>E-Commerce</span> Websites</h5>
               <% break; %>
            <%}%>
        <%}%>
@@ -279,18 +333,34 @@
              <% if(array[i].type=="E-Commerce"){%>
                    <%if(e==0){%>
                      <div class="car1" >
-                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                       <p class="theme-title1"><%=array[i].title%></p>
-                       <p class="theme-desc1"><%=array[i].description%></p>
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                       </form>" tabindex="0">
+                       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                       <p class="theme-title1"><%= str %></p>
+                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                       <p class="theme-desc1"><%= strDesc %></p>
+                       <form action='/form' method='post'>
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                       </form>
                      </div>
 
 
                   <% }else{%>
                     <div class="car">
-                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                      <p class="theme-title"><%=array[i].title%></p>
-                      <p class="theme-desc"><%=array[i].description%></p>
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                      </form>" tabindex="0">
+                      <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                      <p class="theme-title1"><%= str %></p>
+                      <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                      <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
+                      <form action='/form' method='post'>
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                      </form>
                     </div>
                 <%  }%>
                 <%e++;%>
@@ -301,7 +371,7 @@
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Portfolio"){%>
-            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Portfolio</span> Websites</h5>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Portfolio</span> Websites</h5>
               <% break; %>
            <%}%>
        <%}%>
@@ -313,18 +383,34 @@
              <% if(array[i].type=="Portfolio"){%>
                    <%if(f==0){%>
                      <div class="car1" >
-                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                       <p class="theme-title1"><%=array[i].title%></p>
-                       <p class="theme-desc1"><%=array[i].description%></p>
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                       </form>" tabindex="0">
+                       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                       <p class="theme-title1"><%= str %></p>
+                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                       <p class="theme-desc1"><%= strDesc %></p>
+                       <form action='/form' method='post'>
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                       </form>
                      </div>
 
 
                   <% }else{%>
                     <div class="car">
-                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                      <p class="theme-title"><%=array[i].title%></p>
-                      <p class="theme-desc"><%=array[i].description%></p>
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                      </form>" tabindex="0">
+                      <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                      <p class="theme-title1"><%= str %></p>
+                      <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                      <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
+                      <form action='/form' method='post'>
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                      </form>
                     </div>
                 <%  }%>
                 <%f++;%>
@@ -336,7 +422,7 @@
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Media"){%>
-            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Media</span> Websites</h5>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Media</span> Websites</h5>
               <% break; %>
            <%}%>
        <%}%>
@@ -348,18 +434,34 @@
              <% if(array[i].type=="Media"){%>
                    <%if(g==0){%>
                      <div class="car1" >
-                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                       <p class="theme-title1"><%=array[i].title%></p>
-                       <p class="theme-desc1"><%=array[i].description%></p>
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                       </form>" tabindex="0">
+                       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                       <p class="theme-title1"><%= str %></p>
+                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                       <p class="theme-desc1"><%= strDesc %></p>
+                       <form action='/form' method='post'>
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                       </form>
                      </div>
 
 
                   <% }else{%>
                     <div class="car">
-                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                      <p class="theme-title"><%=array[i].title%></p>
-                      <p class="theme-desc"><%=array[i].description%></p>
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                      </form>" tabindex="0">
+                      <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                      <p class="theme-title1"><%= str %></p>
+                      <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                      <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
+                      <form action='/form' method='post'>
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                      </form>
                     </div>
                 <%  }%>
                 <%g++;%>
@@ -370,7 +472,7 @@
       <% for(let i=0;i<array.length;i++){%>
 
           <% if(array[i].type=="Infopreneur"){%>
-            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span style="color:#9400FF;">Infopreneur</span> Websites</h5>
+            <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span >Infopreneur</span> Websites</h5>
               <% break; %>
            <%}%>
        <%}%>
@@ -382,18 +484,34 @@
              <% if(array[i].type=="Infopreneur"){%>
                    <%if(h==0){%>
                      <div class="car1" >
-                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                       <p class="theme-title1"><%=array[i].title%></p>
-                       <p class="theme-desc1"><%=array[i].description%></p>
+                       <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                       </form>" tabindex="0">
+                       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                       <p class="theme-title1"><%= str %></p>
+                       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                       <p class="theme-desc1"><%= strDesc %></p>
+                       <form action='/form' method='post'>
+                         <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                       </form>
                      </div>
 
 
                   <% }else{%>
                     <div class="car">
-                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;">
-                      <p class="theme-title"><%=array[i].title%></p>
-                      <p class="theme-desc"><%=array[i].description%></p>
+                      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='select-button' >Select</button>
+                      </form>" tabindex="0">
+                      <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
+                      <p class="theme-title1"><%= str %></p>
+                      <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
+                      <p class="theme-desc1"><%= strDesc %></p>
                       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
+                      <form action='/form' method='post'>
+                        <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button' >Select</button>
+                      </form>
                     </div>
                 <%  }%>
                 <%h++;%>
