@@ -179,7 +179,6 @@ body::-webkit-scrollbar-thumb {
   display: inline-block;
   box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94,104,121,.288);
   border-radius: 10px;
-  overflow: hidden;
   margin:10px 0 10px 16px;
 }
 .col-form-label {
@@ -190,7 +189,6 @@ body::-webkit-scrollbar-thumb {
   display: inline-block;
   box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94,104,121,.288);
   border-radius: 10px;
-  overflow: hidden;
   margin:10px 0 10px 0;
 }
 
@@ -354,7 +352,7 @@ h2{
   text-decoration: none;
   margin-top: 20px;
    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94,104,121,.288);
-   border-radius: 5px;
+   border-radius: 10px;
 }
 .select-button{
   width:120px;
