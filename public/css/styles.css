@@ -360,11 +360,21 @@ h2{
    border-radius: 10px;
 }
 .select-button{
-  width:120px;
+  width:110px;
   height:40px;
   background-color: #9400FF ;
   color:#FFFFFF;
   border: 0 solid #9400FF;
+  font-weight: bold;
+  text-decoration: none;
+
+}
+.view-button{
+  width:110px;
+  height:40px;
+  background-color: #000000 ;
+  color:#FFFFFF;
+  border: 0 solid #000000;
   font-weight: bold;
   text-decoration: none;
 
@@ -522,7 +532,7 @@ p{
   background:#F3F0D7;
   padding:30px;
   border-radius:20px;
-  box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94,104,121,.288); 
+  box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94,104,121,.288);
 }
 .service-images{
   width:450px;

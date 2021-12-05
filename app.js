@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const multer = require("multer");
 const app = express();
 const nodemail = require('nodemailer');
+const open = require('open');
 
 mongoose.connect("mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net/interndb");
 let success = "false";
@@ -75,11 +76,21 @@ app.get("/form",function(req,res){
 });
 
 app.post("/form",function(req,res){
-  const title = req.body.title;
-  console.log(title);
-  res.render("form",{title:title});
+
+  const select = req.body.select;
+  const view = req.body.view;
+
+  if(select!==undefined){
+     res.render("form",{title:select});
+  }
+
+  if(view!==undefined){
+     open(view);
+     res.redirect("/");
+  }
 
 });
+
 app.post("/companyInfo",function(req,res){
    const email = req.body.email;
    const name = req.body.name;
@@ -159,34 +170,46 @@ app.get("/addForm",function(req,res){
 
 app.get("/themeForm",function(req,res){
 
-  Theme.find({},function(err,items){
+  try{
+    Theme.find({},function(err,items){
 
-    res.render("themeForm",{items:items});
-  });
+      res.render("themeForm",{items:items});
+    });
+  }catch(e){
+    console.log("something went wrong while finding themes");
+  }
 });
 
 app.post("/delete",function(req,res){
   const id = req.body.id;
-  Theme.findOneAndDelete({_id:id},function(err,item){
-    if(err){
-      console.log("cannot find the id in the your database.");
-    }else{
-      console.log("successfully deleted.");
-      res.redirect("themeForm");
-    }
-  });
+  try{
+    Theme.findOneAndDelete({_id:id},function(err,item){
+      if(err){
+        console.log("cannot find the id in the your database.");
+      }else{
+        console.log("successfully deleted.");
+        res.redirect("themeForm");
+      }
+    });
+  }catch(e){
+    console.log("somethinf went wrong while searching for your id");
+  }
 });
 
 app.post("/deleteAd",function(req,res){
   const id = req.body.id;
-  Ads.findOneAndDelete({_id:id},function(err,item){
-    if(err){
-      console.log("cannot find the id in the your database.");
-    }else{
-      console.log("successfully deleted.");
-      res.redirect("addForm");
-    }
-  });
+ try{
+   Ads.findOneAndDelete({_id:id},function(err,item){
+     if(err){
+       console.log("cannot find the id in the your database.");
+     }else{
+       console.log("successfully deleted.");
+       res.redirect("addForm");
+     }
+   });
+ }catch(e){
+   console.log("something went wrong while deleting an Ad");
+ }
 });
 
 
@@ -255,6 +278,6 @@ app.get("/mongod356",function(req,res){
   });
 });
 
-app.listen(process.env.PORT||3000,function(){
+app.listen(process.env.PORT||8000,function(){
   console.log("I am listening");
 });
