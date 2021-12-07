@@ -86,7 +86,6 @@ app.post("/form",function(req,res){
 
   if(view!==undefined){
      open(view);
-     res.redirect("/");
   }
 
 });
