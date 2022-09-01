@@ -90,6 +90,9 @@
              <a class="main-menu-option" href="services">Services</a>
            </li>
            <li class="nav-item">
+            <a class="main-menu-option"  href="ourproducts">Our Products</a>
+          </li>
+           <li class="nav-item">
              <a class="main-menu-option" href="contactus">Contact Us</a>
            </li>
            <!-- <li class="nav-item dropdown">
@@ -181,7 +184,7 @@
 
     <% if(array[i].type=="Educational"){%>
     <div class="car1">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><form action='/form' target='_blank' method='post'>
 
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
@@ -190,14 +193,14 @@
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
-      <p class="theme-desc1"><%= strDesc %></p>
+      <p class="theme-desc1"><%= strDesc %><b class="theme-price"><%= array[i].price%></b></p>
       <div class="mob-select-div">
         <form action='/form' method='post'>
           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button'>Select</button>
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
     <!-- <div class="card-hover">afaf</div> -->
@@ -207,14 +210,14 @@
 
     <% if(array[i].type=="Educational"){%>
     <div class="car">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                     <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                     <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                   </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
-      <p class="theme-desc1"><%= strDesc %></p>
+      <p class="theme-desc1"><%= strDesc %><b class="theme-price" ><%= array[i].price%></b></p>
       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
       <div class="mob-select-div">
         <form action='/form' method='post'>
@@ -222,7 +225,7 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
     <%}%>
@@ -245,7 +248,7 @@
     <% if(array[i].type=="Nonprofit"){%>
     <%if(c==0){%>
     <div class="car1">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                        </form>" tabindex="0">
@@ -259,14 +262,14 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                       </form>" tabindex="0">
@@ -280,7 +283,7 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
     </div>
@@ -306,7 +309,7 @@
     <% if(array[i].type=="Sports"){%>
     <%if(d==0){%>
     <div class="car1">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                        </form>" tabindex="0">
@@ -320,14 +323,14 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                       </form>" tabindex="0">
@@ -342,7 +345,7 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
     <%  }%>
@@ -367,7 +370,7 @@
     <% if(array[i].type=="E-Commerce"){%>
     <%if(e==0){%>
     <div class="car1">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                        </form>" tabindex="0">
@@ -381,14 +384,14 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                       </form>" tabindex="0">
@@ -403,7 +406,7 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
     <%  }%>
@@ -427,7 +430,7 @@
     <% if(array[i].type=="Portfolio"){%>
     <%if(f==0){%>
     <div class="car1">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
 
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
@@ -442,14 +445,14 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                       </form>" tabindex="0">
@@ -464,7 +467,7 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
     <%  }%>
@@ -476,8 +479,8 @@
 
   <% for(let i=0;i<array.length;i++){%>
 
-  <% if(array[i].type=="Media"){%>
-  <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Media</span> Websites</h5>
+  <% if(array[i].type=="Service"){%>
+  <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Service</span> Websites</h5>
   <% break; %>
   <%}%>
        <%}%>
@@ -486,10 +489,10 @@
     <%let g=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
-    <% if(array[i].type=="Media"){%>
+    <% if(array[i].type=="Service"){%>
     <%if(g==0){%>
     <div class="car1">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                        </form>" tabindex="0">
@@ -503,14 +506,14 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                       </form>" tabindex="0">
@@ -525,7 +528,7 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
     <%  }%>
@@ -549,7 +552,7 @@
     <% if(array[i].type=="Infopreneur"){%>
     <%if(h==0){%>
     <div class="car1">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                        </form>" tabindex="0">
@@ -563,14 +566,14 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="images/<%=array[i].thumbnail[0]%>" style="width:250px;height:170px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
                       </form>" tabindex="0">
@@ -585,7 +588,7 @@
         </form>
       </div>
       <div class="mob-view-div">
-        <a href="<%=array[i].url%>" class="mob-view-button">View</a>
+        <a href="<%=array[i].url%>" target="_blank" target="_blank" class="mob-view-button">View</a>
       </div>
     </div>
     <%  }%>

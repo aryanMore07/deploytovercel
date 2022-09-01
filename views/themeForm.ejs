@@ -58,7 +58,7 @@
                     <option value="Sports">Sports</option>
                     <option value="E-Commerce">E-Commerce</option>
                     <option value="Portfolio">Portfolio</option>
-                    <option value="Media">Media</option>
+                    <option value="Service">Service</option>
                     <option value="Nonprofit">Nonprofit</option>
                     <option value="Infopreneur">Infopreneur</option>
                     </select>
@@ -89,21 +89,21 @@
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-        <% items.forEach(function(item){%>
+        <% array.forEach(t => {%>
           <div class="col">
             <div class="card shadow-sm">
               <div class="themePreview">
-                <img src="images/<%=item.thumbnail[0]%>">
+              <img  src="data:image/jpeg;charset=utf-8;base64,<%=t.thumbnail.toString('base64')%>" style="width: 360px;height:225px" alt="" >
               </div>
               <div class="card-body">
 
                 <form  action="/delete" method="post">
-                  <p style="font-weight:bold;"   ><%=item.title%></p>
-                  <input type="hidden" name="title" value="<%=item.title%>">
+                  <p style="font-weight:bold;"   ><%=t.title%></p>
+                  <input type="hidden" name="title" value="<%=t.title%>">
                   <div class="d-flex justify-content-between align-items-center">
                     <div>
-                      <button type="submit" name="id" class="btn btn-sm btn-outline-secondary" value="<%=item._id%>" >Delete</button>
-                    <a class="btn btn-sm btn-dark" href="<%=item.url%>">preview</a>
+                      <button type="submit" name="url" class="btn btn-sm btn-outline-secondary" value="<%=t.url%>" >Delete</button>
+                    <a class="btn btn-sm btn-dark" target="_blank" href="<%=t.url%>">preview</a>
                   </div>
                 </div>
                 </form>
