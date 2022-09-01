@@ -6,6 +6,12 @@ const multer = require("multer");
 const app = express();
 const nodemail = require('nodemailer');
 const open = require('open');
+const fileUpload = require('express-fileupload');
+const fs = require('fs');
+const router = express.Router();
+const mongodb= require('mongodb');
+const mongoClient = mongodb.MongoClient
+const binary = mongodb.Binary;
 
 mongoose.connect("mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net/interndb");
 let success = "false";
@@ -17,15 +23,6 @@ const companySchema = {
   details:String,
   template:String
 }
-const themeSchema = {
-  title:String,
-  thumbnail:[],
-  description:String,
-  price:String,
-  url:String,
-  companyDetails:String,
-  type:String
-}
 
 const advertisement = {
   head:String,
@@ -36,7 +33,6 @@ const advertisement = {
 }
 
 const Info =  mongoose.model("companyInfo",companySchema);
-const Theme = mongoose.model("theme",themeSchema);
 const Ads = mongoose.model("ad",advertisement);
 
 const storage = multer.diskStorage({
@@ -53,20 +49,22 @@ const upload = multer({storage:storage});
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set("view engine","ejs");
+app.use(fileUpload())
 
 
-app.get("/",function(req,res){
-
-
-  Theme.find({},function(err,items){
-    Ads.find({},function(err,obj){
-      res.render("index",{array:items,arr:obj});
-    });
-
-  });
-
-
+app.get("/", (req, res) => {
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net/', { useNewUrlParser: true }, (err, client) => {
+        let db = client.db('interndb')
+        let collection = db.collection('themes')
+        collection.find({}).toArray((err, doc) => {
+            Ads.find({},function(err,obj){
+              res.render("index",{array:doc,arr:obj});
+            });
+          })        
+      })
 });
+
+
 
 app.get("/form",function(req,res){
   const title = req.body.title;
@@ -136,29 +134,24 @@ app.post("/postAdd",function(req,res){
  );
  res.redirect("/");
 });
-app.post("/posttheme",upload.single("thumbnail"),function(req,res){
-  const themeTitle = req.body.title;
-  const thumbnailNames = req.file.originalname;
-  const description = req.body.description;
-  const price = req.body.price;
-  const websiteUrl = req.body.url;
-  const details = req.body.details;
-  const type = req.body.type;
-
-
-  const theme = new Theme({
-    title:themeTitle,
-    thumbnail:thumbnailNames,
-    description:description,
-    price:price,
-    url:websiteUrl,
-    companyDetails:details,
-    type:type
-  });
-
-  theme.save().then(()=>{console.log("sent")});
-  res.redirect("/");
-});
+app.post("/posttheme", (req, res) => {
+  let file = { title: req.body.title, thumbnail: binary(req.files.thumbnail.data), description: req.body.description,price: req.body.price,url: req.body.url,companyDetails: req.body.companyDetails,type: req.body.type }
+  insertFile(file, res)
+})
+function insertFile(file, res) {
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net', { useNewUrlParser: true }, (err, client) => {
+        let db = client.db('interndb')
+        let collection = db.collection('themes')
+        try {
+              collection.insertOne(file)
+              console.log('File Inserted')
+          }
+          catch (err) {
+              console.log('Error while inserting:', err)
+          }
+          res.redirect('/')
+  })
+}
 
 app.get("/addForm",function(req,res){
   Ads.find({},function(err,obj){
@@ -167,22 +160,28 @@ app.get("/addForm",function(req,res){
   });
 });
 
-app.get("/themeForm",function(req,res){
-
-  try{
-    Theme.find({},function(err,items){
-
-      res.render("themeForm",{items:items});
-    });
-  }catch(e){
-    console.log("something went wrong while finding themes");
-  }
+app.get("/themeForm", async function(req,res){
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net', { useNewUrlParser: true }, (err, client) => {
+        let db = client.db('interndb')
+        let collection = db.collection('themes')
+        collection.find({}).toArray((err, doc) => {
+            if (err) {
+                console.log('err in finding doc:', err)
+            }
+            else {
+                res.render("themeForm",{array:doc});
+            }
+        })
+       })
 });
 
 app.post("/delete",function(req,res){
-  const id = req.body.id;
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net/', { useNewUrlParser: true }, (err, client) => {
+    let db = client.db('interndb')
+    let collection = db.collection('themes')
+    const url =req.body.url;
   try{
-    Theme.findOneAndDelete({_id:id},function(err,item){
+    collection.deleteOne({url:url},function(err,item){
       if(err){
         console.log("cannot find the id in the your database.");
       }else{
@@ -193,6 +192,7 @@ app.post("/delete",function(req,res){
   }catch(e){
     console.log("somethinf went wrong while searching for your id");
   }
+})
 });
 
 app.post("/deleteAd",function(req,res){
@@ -224,52 +224,33 @@ app.get("/aboutus",function(req,res){
   res.render("aboutus");
 });
 
+app.get("/ourproducts",function(req,res){
+  res.render("ourproducts");
+});
+
 app.post("/customsearch",function(req,res){
   let custom  = lodash.capitalize(req.body.search);
   let bool = false;
-  Theme.find({},function(err,array){
-    for(let i=0;i<array.length;i++){
-      if(array[i].type == custom){
-      bool = true;
-      break;
-      }
-    }
-  });
-
-    Theme.find({},function(err,array){
-
-        res.render("customsearch",{array:array,custom:custom});
-
-
-    });
-
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net/', { useNewUrlParser: true }, (err, client) => {
+    let db = client.db('interndb')
+    let collection = db.collection('themes')
+    collection.find({}).toArray((err, doc) => {
+      res.render("customsearch",{array:doc,custom:custom});
+  })
+  })
 });
 
 app.post("/sub-menu",function(req,res){
   let custom  = req.body.value;
   let bool = false;
-  Theme.find({},function(err,array){
-    for(let i=0;i<array.length;i++){
-      if(array[i].type == custom){
-      bool = true;
-      break;
-      }
-    }
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net/', { useNewUrlParser: true }, (err, client) => {
+    let db = client.db('interndb')
+    let collection = db.collection('themes')
+    collection.find({}).toArray((err, doc) => {
+      res.render("customsearch",{array:doc,custom:custom});
   });
-
-    Theme.find({},function(err,array){
-
-        res.render("customsearch",{array:array,custom:custom});
-
-
-    });
-
+  })
 });
-
-
-
-
-
 
 app.get("/mongod356",function(req,res){
   Info.find({},function(err,item){
