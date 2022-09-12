@@ -14,7 +14,12 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
   <!-- JavaScript Bundle with Popper -->
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<!--tiny slider-->
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Bootstrap core CSS -->
@@ -72,9 +77,8 @@
   <%}%>
    <div class="nav-container" style="position:relative;z-index:2;">
      <nav class="navbar navbar-expand-lg navbar-light" style="padding:0 !important;">
-     <div class="container-fluid" style="padding:10px 120px;">
-       <a class="navbar-brand" href="#" style="font-weight:bold;"">Myknot <span style="color:#9400FF;">Services</span></a>
-       <!-- <img style="width:100px;"src="/images/padded-logo.png" alt=""> -->
+     <div class="container-fluid" style="padding:10px 70px;">
+      <a class="navbar-brand" href="#" style="font-weight:bold;"><img style="width:100px;" class="nav-log" src="/images/logo black.png" alt=""></a>
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
@@ -125,13 +129,13 @@
      <form action="/sub-menu" method="post">
        <ul class="category-nav">
 
-         <li value="Educational" class="category-options">Educational Websites</li>
-         <li value="Sports" class="category-options">Sports Websites</li>
-         <li value="E-Commerce" class="category-options">E-Commerce Websites</li>
-         <li value="Portfolio" class="category-options">Portfolio Websites</li>
-         <li value="Media" class="category-options">Media Websites</li>
-         <li value="Nonprofit" class="category-options">Nonprofit Websites</li>
-         <li value="Infopreneur" class="category-options">Infopreneur Websites</li>
+       <a class="nav-list" href="#education">  <li value="Educational" class="category-options">Educational Websites</li></a>
+       <a class="nav-list" href="#sport">  <li value="Sports" class="category-options">Sports Websites</li></a>
+       <a class="nav-list" href="#e-commerce">  <li value="E-Commerce" class="category-options">E-Commerce Websites</li></a>
+       <a class="nav-list" href="#portfolio">  <li value="Portfolio" class="category-options">Portfolio Websites</li></a>
+       <a class="nav-list" href="#service">  <li value="Service" class="category-options">Service Websites</li></a>
+       <a class="nav-list" href="#nonprofit">  <li value="Nonprofit" class="category-options">Nonprofit Websites</li></a>
+       <a class="nav-list" href="#infopreneur">  <li value="Infopreneur" class="category-options">Infopreneur Websites</li></a>
        </ul>
      </form>
    </div>
@@ -170,6 +174,7 @@
       <div class="head-font" style="margin-bottom:20px;">
         <h3>Lets start our search,</h3>
       </div>
+      <section id="education">
       <% for(let i=0;i<array.length;i++){%>
   <!-- style="color:#9400FF;" -->
   <!-- previous sub head title colour -->
@@ -177,23 +182,22 @@
   <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Educational</span> Websites </h5>
   <% break; %>
   <%}%>
-       <%}%>
-
-  <div class="scrolling-wrapper">
-    <% for(let i=0;i<1;i++){%>
+       <%}%><img src="/images/arrow.png" style="position: absolute;height: 64px;margin-left: 85%;margin-top: 8%;">
+<div class="scrolling-wrapper education">
+  <% for(let i=0;i<1;i++){%>
 
     <% if(array[i].type=="Educational"){%>
     <div class="car1">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><form action='/form' target='_blank' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><form action='/form' target='_blank' method='post'>
 
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
-
+                         <button type='button' class='price-button'><%= array[i].price%></button>
                  </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
-      <p class="theme-desc1"><%= strDesc %><b class="theme-price"><%= array[i].price%></b></p>
+      <p class="theme-desc1"><%= strDesc %></p>
       <div class="mob-select-div">
         <form action='/form' method='post'>
           <button type='submit' name='title' value='<%=array[i].title%>' class='mob-select-button'>Select</button>
@@ -201,6 +205,9 @@
       </div>
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
+      </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
       </div>
     </div>
     <!-- <div class="card-hover">afaf</div> -->
@@ -210,14 +217,15 @@
 
     <% if(array[i].type=="Educational"){%>
     <div class="car">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                     <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                     <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
+                    <button type='button' class='price-button'><%= array[i].price%></button>
                   </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
-      <p class="theme-desc1"><%= strDesc %><b class="theme-price" ><%= array[i].price%></b></p>
+      <p class="theme-desc1"><%= strDesc %></p>
       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
       <div class="mob-select-div">
         <form action='/form' method='post'>
@@ -227,12 +235,16 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
     <%}%>
            <%}%>
 
   </div>
-
+</section>
+<section id="nonprofit">
   <% for(let i=0;i<array.length;i++){%>
 
   <% if(array[i].type=="Nonprofit"){%>
@@ -240,18 +252,18 @@
   <% break; %>
   <%}%>
        <%}%>
-
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper nonprofit">
     <%let c=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
     <% if(array[i].type=="Nonprofit"){%>
     <%if(c==0){%>
     <div class="car1">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
-                       </form>" tabindex="0">
+                         <button type='button' class='price-button'><%= array[i].price%></button>
+                        </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
@@ -264,14 +276,18 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+       <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
+                        <button type='button' class='price-button'><%= array[i].price%></button>
                       </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
@@ -284,6 +300,9 @@
       </div>
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
+      </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
       </div>
       <!-- <p style="width:200px;word-wrap: break-word; ">a book or other written or printed work, regarded in terms of its content rather than its physical form.</p> -->
     </div>
@@ -293,7 +312,8 @@
            <%}%>
 
   </div>
-
+</section>
+<section id="sport">
   <% for(let i=0;i<array.length;i++){%>
 
   <% if(array[i].type=="Sports"){%>
@@ -301,18 +321,18 @@
   <% break; %>
   <%}%>
        <%}%>
-
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper sport">
     <%let d=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
     <% if(array[i].type=="Sports"){%>
     <%if(d==0){%>
     <div class="car1">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
-                       </form>" tabindex="0">
+                         <button type='button' class='price-button'><%= array[i].price%></button>
+                        </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
@@ -325,14 +345,18 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
+                        <button type='button' class='price-button'><%= array[i].price%></button>
                       </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
@@ -346,6 +370,9 @@
       </div>
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
+      </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
       </div>
     </div>
     <%  }%>
@@ -354,7 +381,8 @@
            <%}%>
 
   </div>
-
+</section>
+<section id="e-commerce">
   <% for(let i=0;i<array.length;i++){%>
 
   <% if(array[i].type=="E-Commerce"){%>
@@ -362,18 +390,18 @@
   <% break; %>
   <%}%>
        <%}%>
-
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper e-commerce">
     <%let e=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
     <% if(array[i].type=="E-Commerce"){%>
     <%if(e==0){%>
     <div class="car1">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
-                       </form>" tabindex="0">
+                           <button type='button' class='price-button'><%= array[i].price%></button>
+                    </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
@@ -386,14 +414,18 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
+                        <button type='button' class='price-button'><%= array[i].price%></button>
                       </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
@@ -407,6 +439,9 @@
       </div>
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
+      </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
       </div>
     </div>
     <%  }%>
@@ -415,6 +450,8 @@
            <%}%>
 
   </div>
+</section>
+<section id="portfolio">
   <% for(let i=0;i<array.length;i++){%>
 
   <% if(array[i].type=="Portfolio"){%>
@@ -422,19 +459,19 @@
   <% break; %>
   <%}%>
        <%}%>
-
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper portfolio">
     <%let f=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
     <% if(array[i].type=="Portfolio"){%>
     <%if(f==0){%>
     <div class="car1">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
 
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
-                       </form>" tabindex="0">
+                         <button type='button' class='price-button'><%= array[i].price%></button>
+                      </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
@@ -447,14 +484,18 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
+                        <button type='button' class='price-button'><%= array[i].price%></button>
                       </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
@@ -468,6 +509,9 @@
       </div>
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
+      </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
       </div>
     </div>
     <%  }%>
@@ -476,7 +520,8 @@
            <%}%>
 
   </div>
-
+</section>
+<section id="service">
   <% for(let i=0;i<array.length;i++){%>
 
   <% if(array[i].type=="Service"){%>
@@ -484,18 +529,18 @@
   <% break; %>
   <%}%>
        <%}%>
-
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper service">
     <%let g=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
     <% if(array[i].type=="Service"){%>
     <%if(g==0){%>
     <div class="car1">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
-                       </form>" tabindex="0">
+                         <button type='button' class='price-button'><%= array[i].price%></button>
+                        </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
@@ -508,14 +553,18 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
+                        <button type='button' class='price-button'><%= array[i].price%></button>
                       </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
@@ -530,6 +579,9 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
     <%  }%>
     <%g++;%>
@@ -537,6 +589,8 @@
            <%}%>
 
   </div>
+</section>
+<section id="infopreneur">
   <% for(let i=0;i<array.length;i++){%>
 
   <% if(array[i].type=="Infopreneur"){%>
@@ -544,18 +598,18 @@
   <% break; %>
   <%}%>
        <%}%>
-
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper infopreneur">
     <%let h=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
     <% if(array[i].type=="Infopreneur"){%>
     <%if(h==0){%>
     <div class="car1">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                          <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                          <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
-                       </form>" tabindex="0">
+                         <button type='button' class='price-button'><%= array[i].price%></button>
+                        </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
       <% let strDesc = array[i].description;if(strDesc.length>35){strDesc = strDesc.substring(0,35)+"...";}%>
@@ -568,14 +622,18 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
 
 
     <% }else{%>
     <div class="car">
-      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:335px;height:200px;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
+      <img src="data:image/jpeg;charset=utf-8;base64,<%=array[i].thumbnail.toString('base64')%>"  style="width:100%;height:200px;object-fit: fill;" data-bs-toggle="popover" title="<h6><%=array[i].title%></h6>" data-bs-content="<p><%=array[i].description%></p><br><form action='/form' method='post'>
                         <button type='submit' name='select' value='<%=array[i].title%>' class='select-button' >Select</button>
                         <button type='submit' name='view' value='<%=array[i].url%>' class='view-button' >View</button>
+                        <button type='button' class='price-button'><%= array[i].price%></button>
                       </form>" tabindex="0">
       <%  let str = array[i].title;if(str.length>35){ str = str.substring(0,35)+"...";}%>
       <p class="theme-title1"><%= str %></p>
@@ -590,6 +648,9 @@
       <div class="mob-view-div">
         <a href="<%=array[i].url%>" target="_blank" target="_blank" class="mob-view-button">View</a>
       </div>
+      <div class="mob-price-div">
+        <button type='button'class='mob-price-button'><%= array[i].price%></button>
+      </div>
     </div>
     <%  }%>
     <%h++;%>
@@ -597,21 +658,29 @@
            <%}%>
 
   </div>
+</section>
+
+  </div>
+
+
+
+
+
+
 
 
   </div>
 
-
-
-
-
-
-
-
   </div>
-
-  </div>
-
+<script>
+  var edu = tns({container: ".education","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+  var spo = tns({container: ".sport","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+  var ecom = tns({container: ".e-commerce","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+  var serv = tns({container: ".service","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+  var port = tns({container: ".portfolio","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+  var nonp = tns({container: ".nonprofit","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+  var infop = tns({container: ".infopreneur","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+</script>
 
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   </main>
