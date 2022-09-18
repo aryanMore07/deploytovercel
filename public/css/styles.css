@@ -190,6 +190,17 @@ body::-webkit-scrollbar-thumb {
     padding: 10px 50px !important;
   }
 }
+.slider-arrow{
+  height: 70px;
+  float: right;
+  margin-right: -10%;
+  margin-top: 10%;
+}
+@media(max-width:830px){
+.slider-arrow{
+  display: none;
+}
+}
 .car{
   width:335px ;
   display: inline-block;
@@ -389,9 +400,9 @@ h2{
   height:40px;
   margin-top: 5px;
   margin-left: 25%;
-  background-color: #f3534d ;
-  color:#000000;
-  border: 0 solid #f3534d;
+  background-color: gray ;
+  color:#FFFFFF;
+  border: 0 solid gray;
   font-weight: bold;
   text-decoration: none;
 
@@ -471,9 +482,9 @@ h2{
   .mob-price-button{
     width:100px;
     height:35px;
-    background-color: #f3534d ;
-    color:#000000;
-    border: 0 solid #f3534d;
+    background-color: gray;
+    color:#FFFFFF;
+    border: 0 solid gray;
     font-weight: bold;
     text-decoration: none;
     display: inline-block;

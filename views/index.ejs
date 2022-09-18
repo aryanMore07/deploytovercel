@@ -182,7 +182,7 @@
   <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Educational</span> Websites </h5>
   <% break; %>
   <%}%>
-       <%}%>
+       <%}%><img class="slider-arrow education-arrow" src="/images/arrow.png" >
 <div class="scrolling-wrapper education">
   <% for(let i=0;i<1;i++){%>
 
@@ -252,6 +252,7 @@
   <% break; %>
   <%}%>
        <%}%>
+    <img class="slider-arrow nonprofit-arrow" src="/images/arrow.png">
   <div class="scrolling-wrapper nonprofit">
     <%let c=0;%>
     <% for(let i=0;i<array.length;i++){%>
@@ -321,6 +322,7 @@
   <% break; %>
   <%}%>
        <%}%>
+<img class="slider-arrow sport-arrow" src="/images/arrow.png">
   <div class="scrolling-wrapper sport">
     <%let d=0;%>
     <% for(let i=0;i<array.length;i++){%>
@@ -390,6 +392,7 @@
   <% break; %>
   <%}%>
        <%}%>
+       <img class="slider-arrow e-commerce-arrow" src="/images/arrow.png" >
   <div class="scrolling-wrapper e-commerce">
     <%let e=0;%>
     <% for(let i=0;i<array.length;i++){%>
@@ -459,7 +462,8 @@
   <% break; %>
   <%}%>
        <%}%>
-  <div class="scrolling-wrapper portfolio">
+<img class="slider-arrow portfolio-arrow" src="/images/arrow.png">
+       <div class="scrolling-wrapper portfolio">
     <%let f=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
@@ -529,7 +533,8 @@
   <% break; %>
   <%}%>
        <%}%>
-  <div class="scrolling-wrapper service">
+       <img class="slider-arrow service-arrow" src="/images/arrow.png" >
+       <div class="scrolling-wrapper service">
     <%let g=0;%>
     <% for(let i=0;i<array.length;i++){%>
 
@@ -597,7 +602,8 @@
   <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;"><span>Infopreneur</span> Websites</h5>
   <% break; %>
   <%}%>
-       <%}%>
+       <%}%>       
+       <!-- <img class="slider-arrow infopreneur-arrow" src="/images/arrow.png" > -->
   <div class="scrolling-wrapper infopreneur">
     <%let h=0;%>
     <% for(let i=0;i<array.length;i++){%>
@@ -680,6 +686,14 @@
   var port = tns({container: ".portfolio","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
   var nonp = tns({container: ".nonprofit","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
   var infop = tns({container: ".infopreneur","items": 3,"slideBy":3,autoplay: true,autoplayHoverPause:true,autoplayButtonOutput: false,controls :false,nav:false,preventScrollOnTouch: 'force',rewind:true, responsive: {1100: {items: 3,},770: {items: 2,slideBy:2,},320: {items: 1,slideBy:1,}}});
+  
+  document.querySelector('.education-arrow').onclick = function () { edu.goTo('next');};
+  document.querySelector('.sport-arrow').onclick = function () {spo.goTo('next');};
+  document.querySelector('.e-commerce-arrow').onclick = function () {ecom.goTo('next');};
+  document.querySelector('.service-arrow').onclick = function () {serv.goTo('next');};
+  document.querySelector('.portfolio-arrow').onclick = function () {port.goTo('next');};
+  document.querySelector('.nonprofit-arrow').onclick = function () {nonp.goTo('next');};
+  document.querySelector('.infopreneur-arrow').onclick = function () {infop.goTo('next');};
 </script>
 
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
