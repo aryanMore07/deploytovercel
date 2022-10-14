@@ -110,6 +110,21 @@
            <input class="form-control me-2 form-search"  type="search" name="search" placeholder="Search" aria-label="Search">
            <button   type="submit" class="search-button"></button>
          </form>
+         <a class="cart-icon" href="cart"><img src="images/cart.png" style="width: 40px;"></a>
+         <div class="dropdown">
+            <img src="images/profile-icon.png" style="width: 50px;"></a>
+            <div class="dropdown-content">
+              <% if(user) {%>
+                <a href="profile">My Profile</a>
+                <form id="logout" action="/logout" method="post">
+                <a onclick="document.getElementById('logout').submit()" href="#">Logout</a>
+              </form>
+              <% } else {%>
+                <a href="register">Register</a>
+                <a href="login">Login</a>
+              <% } %>
+            </div>
+          </div>
 
 
 
