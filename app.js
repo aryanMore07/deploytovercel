@@ -161,6 +161,27 @@ else{
 })
 });
 
+app.post("/updateuser",function(req,res,next){
+  const email= req.user.email;
+   User.findOneAndUpdate({email:email},{
+    $set:{name : req.body.name, companyName : req.body.cname, phoneno : req.body.phone},
+    }, function (err, result) {
+      if (err) {
+        console.log(err);
+        return res.redirect('/profile');
+
+      } else {
+        req.user.name = req.body.name;
+        req.user.companyName = req.body.cname;
+        req.user.phoneno =req.body.phone;
+       
+ return res.redirect('/profile');
+}
+
+}
+)
+});
+
 
 app.get("/", (req, res) => {
   mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net/', { useNewUrlParser: true }, (err, client) => {
@@ -283,6 +304,45 @@ app.get("/themeForm", async function(req,res){
             }
         })
        })
+});
+
+app.post("/themeupdate",function(req,res){
+  const id=mongoose.Types.ObjectId(req.body.id);
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net', { useNewUrlParser: true }, (err, client) => {
+    let db = client.db('interndb')
+    let collection = db.collection('themes')
+    collection.find({_id:id}).toArray((err, doc) => {
+        if (err) {
+            console.log('err in finding doc:', err)
+        }
+        else {
+          res.render("themeupdate",{array:doc});
+        }
+    })
+   })
+});
+
+app.post("/updatetheme",function(req,res){
+  const id=mongoose.Types.ObjectId(req.body.id);
+  mongoClient.connect('mongodb+srv://Admin-Shubham:11816921@cluster0.bm81x.mongodb.net', { useNewUrlParser: true }, (err, client) => {
+    let db = client.db('interndb')
+    let collection = db.collection('themes')
+    try {
+      if(req.files.thumbnail){
+        collection.findOneAndUpdate({_id:id},{
+          $set:{ title: req.body.title, thumbnail: binary(req.files.thumbnail.data), description: req.body.description,price: req.body.price,url: req.body.url,companyDetails: req.body.companyDetails, type: req.body.type }
+        });
+      res.redirect('/themeForm');
+     }
+     }
+catch(err) {
+  collection.findOneAndUpdate({_id:id},{
+    $set:{ title: req.body.title, description: req.body.description,price: req.body.price,url: req.body.url,companyDetails: req.body.companyDetails, type: req.body.type }
+  });
+ res.redirect('/themeForm');
+}
+}
+)
 });
 
 app.post("/delete",function(req,res){

@@ -21,36 +21,36 @@
           </div>
           <div class="col-md-6">
             <h5>Update Your Details!</h5>
-            <!-- <form class="mb-5" id="myForm" method="post" onsubmit="isSuccess()" action="/regupdate"> -->
-             <form class="mb-5" id="myForm" method="post" action="#">
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <input type="text"  class="form-control" name="name" id="name" value="<%=user.name %>" >
+            <form class="mb-5" id="myForm" method="post" action="/updateuser">
+                <input type="hidden" name="id" value="<%=user._id %>">
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input type="text"  class="form-control" name="name" id="name" value="<%=user.name %>" >
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <input type="email" class="form-control" name="email" id="email" value="<%=user.email %>" disabled >
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input type="email" class="form-control" name="email" id="email" value="<%=user.email %>" disabled >
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <input type="text" class="form-control" name="cname" id="companyName" value="<%=user.company %>" placeholder="Your company name (optional)" >
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" name="cname" id="companyName" value="<%=user.companyName %>" placeholder="Your company name (optional)" >
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <textarea class="form-control" name="details" id="details" cols="30" rows="8" placeholder="Details of your company (optional)"></textarea>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input type="number" class="form-control" name="phone" id="Phone" value="<%=user.phoneno %>" placeholder="Your Phone Number" >
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <!-- <button type="submit"  class="btnn btnn-primary rounded-0 py-2 px-4">Update</button> -->
-
-                  <span class="submitting"></span>
+                <div class="row">
+                  <div class="col-12">
+                    <button type="submit"  class="btnn btnn-primary rounded-0 py-2 px-4">Update</button>
+  
+                    <span class="submitting"></span>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
 
             <div id="form-message-warning mt-4"></div>
             <div id="form-message-success">
